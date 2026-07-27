@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/oaecp/v0.1/signed-execution-receipt.schema.json",
+  "title": "Signed Execution Receipt",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_version", "receipt_id", "issued_at", "request", "authority",
+    "policy", "decision", "execution", "evidence_hashes", "record_hash", "signature"
+  ],
+  "properties": {
+    "profile_version": {"const": "0.1"},
+    "receipt_id": {"type": "string", "format": "uuid"},
+    "issued_at": {"type": "string", "format": "date-time"},
+    "request": {"$ref": "governed-action-envelope.schema.json"},
+    "authority": {
+      "type": "object",
+      "required": ["status", "subject", "capabilities"],
+      "properties": {
+        "status": {"enum": ["VALID", "INVALID", "EXPIRED", "MISSING"]},
+        "subject": {"type": "string"},
+        "capabilities": {"type": "array", "items": {"type": "string"}}
+      }
+    },
+    "policy": {
+      "type": "object",
+      "required": ["policy_id", "policy_version", "status"],
+      "properties": {
+        "policy_id": {"type": "string"},
+        "policy_version": {"type": "string"},
+        "status": {"enum": ["EVALUATED", "TIMEOUT", "ERROR"]}
+      }
+    },
+    "decision": {"enum": ["ALLOW", "HOLD", "DENY"]},
+    "execution": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["authorized", "attempted", "status"],
+      "properties": {
+        "authorized": {"type": "boolean"},
+        "attempted": {"type": "boolean"},
+        "status": {"enum": ["NOT_ATTEMPTED", "SUCCEEDED", "FAILED", "UNKNOWN"]},
+        "result_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+        "error_code": {"type": "string"}
+      }
+    },
+    "evidence_hashes": {
+      "type": "array",
+      "items": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"}
+    },
+    "previous_record_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "record_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "signature": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "key_id", "value"],
+      "properties": {
+        "algorithm": {"const": "Ed25519"},
+        "key_id": {"type": "string", "minLength": 1},
+        "value": {"type": "string", "pattern": "^[A-Za-z0-9_-]+$"}
+      }
+    }
+  }
+}
+

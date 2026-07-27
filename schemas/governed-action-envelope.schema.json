@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://example.org/oaecp/v0.1/governed-action-envelope.schema.json",
+  "title": "Governed Action Envelope",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "profile_version", "request_id", "issued_at", "agent_identity",
+    "capability_id", "requested_action", "resource_scope", "risk_level",
+    "tenant", "environment", "payload_hash", "authority_chain", "idempotency_key"
+  ],
+  "properties": {
+    "profile_version": {"const": "0.1"},
+    "request_id": {"type": "string", "format": "uuid"},
+    "issued_at": {"type": "string", "format": "date-time"},
+    "agent_identity": {"type": "string", "minLength": 1},
+    "capability_id": {"type": "string", "pattern": "^[a-z][a-z0-9_.-]+$"},
+    "requested_action": {"type": "string", "minLength": 1},
+    "resource_scope": {"type": "object"},
+    "risk_level": {"enum": ["low", "medium", "high", "critical"]},
+    "tenant": {"type": "string", "minLength": 1},
+    "environment": {"type": "string", "minLength": 1},
+    "payload_hash": {"type": "string", "pattern": "^sha256:[0-9a-f]{64}$"},
+    "authority_chain": {
+      "type": "array",
+      "items": {"type": "string", "minLength": 1}
+    },
+    "approval_reference": {"type": "string", "minLength": 16},
+    "idempotency_key": {"type": "string", "minLength": 16, "maxLength": 255}
+  }
+}
+

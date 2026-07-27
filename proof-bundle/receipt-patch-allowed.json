@@ -1,0 +1,56 @@
+{
+  "profile_version": "0.1",
+  "receipt_id": "e509df90-ea2d-458d-b735-8cc3f6a48e85",
+  "issued_at": "2026-07-27T17:37:06.147753Z",
+  "request": {
+    "profile_version": "0.1",
+    "request_id": "8a8ce9d7-a39b-41dd-8ef2-c53598030e73",
+    "issued_at": "2026-07-27T17:37:06.146710Z",
+    "agent_identity": "spiffe://demo.example/agent/remediator",
+    "capability_id": "repository.patch.propose",
+    "requested_action": "propose patch",
+    "resource_scope": {
+      "repository": "demo/repo",
+      "branch": "remediation"
+    },
+    "risk_level": "high",
+    "tenant": "public-demo",
+    "environment": "controlled",
+    "payload_hash": "sha256:e6b3c168fea428e1beeb2919fc4399c9a364f7e8193106df7bd61a2d970d94f7",
+    "authority_chain": [
+      "demo-delegation-v1"
+    ],
+    "idempotency_key": "bdc7e370-dd5b-40b9-8304-21cb6876dfc0"
+  },
+  "authority": {
+    "status": "VALID",
+    "subject": "spiffe://demo.example/agent/remediator",
+    "capabilities": [
+      "repository.inspect",
+      "repository.merge.production",
+      "repository.patch.propose"
+    ]
+  },
+  "policy": {
+    "policy_id": "demo.secure-coding",
+    "policy_version": "1",
+    "status": "EVALUATED"
+  },
+  "decision": "ALLOW",
+  "execution": {
+    "authorized": true,
+    "attempted": true,
+    "status": "SUCCEEDED",
+    "result_hash": "sha256:788ede21b0f2ecc43828ffcb80126a2555925d3dd0fde9f49f24aca4c69e6dd0"
+  },
+  "evidence_hashes": [
+    "sha256:c912ef3a58717e258ead1c067813f7ac43f14034bf12a8d8296c4b6b3741bfb9"
+  ],
+  "previous_record_hash": "sha256:d6737da83fbb982214f48e44d90da95cf17617f5400bce1c74b53bd5ff3bf266",
+  "record_hash": "sha256:c7a8beafae7e90af4a0b3cc1d1580ce65bc8424019cf84f300ed2be83ac33c5e",
+  "signature": {
+    "algorithm": "Ed25519",
+    "key_id": "demo-ed25519-2026-01",
+    "value": "C8LHonQz3q5IzYEMKi7hx95YcrusT2feXy7tnh9tUeLQBmOMHWAa7VXec89dFbDyNTRpb1_T3RC0CM8Ys49hBA"
+  }
+}

@@ -1,0 +1,72 @@
+{
+  "executor_calls": [
+    "inspect",
+    "patch"
+  ],
+  "cases": [
+    {
+      "case": "inspect-allowed",
+      "decision": "ALLOW",
+      "verification": {
+        "valid": true,
+        "findings": {
+          "profile_version": true,
+          "record_hash": true,
+          "signature": true,
+          "authority_binding": true,
+          "policy": true,
+          "execution_consistency": true,
+          "chain": true
+        }
+      }
+    },
+    {
+      "case": "patch-allowed",
+      "decision": "ALLOW",
+      "verification": {
+        "valid": true,
+        "findings": {
+          "profile_version": true,
+          "record_hash": true,
+          "signature": true,
+          "authority_binding": true,
+          "policy": true,
+          "execution_consistency": true,
+          "chain": true
+        }
+      }
+    },
+    {
+      "case": "merge-held",
+      "decision": "HOLD",
+      "verification": {
+        "valid": true,
+        "findings": {
+          "profile_version": true,
+          "record_hash": true,
+          "signature": true,
+          "authority_binding": true,
+          "policy": true,
+          "execution_consistency": true,
+          "chain": true
+        }
+      }
+    },
+    {
+      "case": "credential-rotation-denied",
+      "decision": "DENY",
+      "verification": {
+        "valid": true,
+        "findings": {
+          "profile_version": true,
+          "record_hash": true,
+          "signature": true,
+          "authority_binding": true,
+          "policy": true,
+          "execution_consistency": true,
+          "chain": true
+        }
+      }
+    }
+  ]
+}
