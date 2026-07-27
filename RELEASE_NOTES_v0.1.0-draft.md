@@ -1,4 +1,4 @@
-# OAECP v0.1.0-draft — Public Reference Implementation
+﻿# OAECP v0.1.0-draft â€” Public Reference Implementation
 
 OAECP v0.1.0-draft is an open, model-neutral profile and reference implementation for governing consequential AI-agent actions at the point of use and producing independently verifiable execution receipts.
 
@@ -56,4 +56,5 @@ This is a draft contribution and tested reference implementation. It is not:
 - a fully hardened authorization service;
 - a claim of full RFC 8785 implementation conformance.
 
-See `docs/OAECP_PUBLIC_REVIEW_AND_USAGE_GUIDE.md` for the complete limitations and roadmap.
+The expanded public review, limitations, and roadmap are maintained on the repository main branch as post-release documentation.
+
